@@ -497,14 +497,6 @@ var CHALLENGES = [
            ['Check in each time','Scan the QR at the venue so the session is recorded.'],
            ['Claim the code','A one-time code appears in Rewards when you hit eight.']],
     terms:['One code per member per campaign','Sessions must be completed, not just booked','Code valid 30 days from issue','Excludes sale items and bundles'] },
-  { id:'huda', brand:'Huda Beauty', caption:'Move with confidence', img:'challenge-huda.jpg', perk:'Full-size 1 Coat Wow mascara',
-    goal:'Complete 5 classes in 30 days', reward:'A full-size Huda Beauty 1 Coat Wow mascara', progress:2, target:5, days:19,
-    about:'Huda Beauty is backing your comeback. Complete five booked classes — any sport — inside thirty days and a full-size mascara is yours.',
-    steps:[['Join the challenge','Tap join and the tracker starts from your next booking.'],
-           ['Complete five classes','Any class booking inside the 30-day window counts.'],
-           ['Check in each time','Scan the QR at the venue so the session is recorded.'],
-           ['Collect your reward','Pick it up at any Huda Beauty counter in Abu Dhabi.']],
-    terms:['One reward per member per campaign','Classes must be completed, not just booked','Reward valid 60 days from issue','Cannot be combined with other offers'] },
   { id:'adidas', brand:'adidas × Strava', caption:'Start with a step', img:'challenge-adidas-strava.jpg', perk:'20% off adidas running',
     goal:'Log 100 km on Strava this month', reward:'20% off adidas running shoes and 1,000 points', progress:64, target:100, days:12,
     about:'Link your Strava and every run, walk and ride counts. Hit 100 km in a calendar month and adidas takes twenty percent off your next pair.',
@@ -688,12 +680,12 @@ function viewHome() {
     '</section>' +
 
     '<section class="section">' +
-      sechead('Classes In Abu Dhabi', 'Find your move. Try your first class for free.', '#/classes') +
+      sechead('Classes In Abu Dhabi', 'Find your move. Try your first class for free.', '#/classes', true) +
       '<div class="rail scrollx">' + CLASSES.slice(0, 6).map(classTile).join('') + '</div>' +
     '</section>' +
 
     '<section class="section">' +
-      sechead('Venues', 'Discover places to get active across Abu Dhabi', '#/venues') +
+      sechead('Venues', 'Discover places to get active across Abu Dhabi', '#/venues', true) +
       '<div style="margin-top:14px">' + VENUES.slice(0, 3).map(venueCard).join('') + '</div>' +
     '</section>' +
 
