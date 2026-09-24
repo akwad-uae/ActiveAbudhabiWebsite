@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#efefef">
+<title>Active Abu Dhabi</title>
+<meta name="description" content="A Healthier. Happier. Stronger. Abu Dhabi — Move. Live. Belong.">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/AcuminVariableConcept.otf" as="font" type="font/otf" crossorigin>
+<style>
+/* =========================================================
+   Active Abu Dhabi — UI from "Avtive App.ai" (1125 px artboard)
+   Every size below is the artboard value ÷ 2.556 (1125 → 440 frame)
+   Font: Acumin Variable Concept (ExtraLight → Bold via the wght axis)
+   ========================================================= */
+@font-face{
+  font-family:'Acumin Variable Concept';
+  src:url('assets/fonts/AcuminVariableConcept.otf') format('opentype-variations'),
+      url('assets/fonts/AcuminVariableConcept.otf') format('opentype');
+  font-weight:100 900;
+  font-stretch:50% 115%;
+  font-style:normal;
+  font-display:swap;
+}
+:root{
+  --bg:#efefef; --card:#ffffff; --card-2:#f6f6f6;
+  --line:#d9d9d9; --line-2:#a1a1a1;
+  --text:#333333; --muted:#a1a1a1; --muted-2:#8a8a8a;
+  --accent:#ec6337; --accent-dark:#d9532a; --dot:#808080;
+  --star:#f5a623; --ok:#2fb36b;
+  --frame:440px; --gutter:18px; --nav-h:92px;
+  --font:'Acumin Variable Concept','Acumin Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --r-card:15px; --r-tile:14px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--font); font-weight:400;
+  -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%; overflow-x:hidden;
+}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+img{display:block;max-width:100%}
+h1,h2,h3,h4,p{margin:0}
+a{color:inherit;text-decoration:none}
+.scrollx{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.scrollx::-webkit-scrollbar{display:none}
+.scrolly{overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.scrolly::-webkit-scrollbar{display:none}
+.w300{font-weight:300}.w500{font-weight:500}.w600{font-weight:600}.w700{font-weight:700}
+
+/* ================= SPLASH ================= */
+.splash{
+  position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);transition:opacity .55s ease,visibility .55s ease;
+  animation:splashOut .55s ease 3s forwards;
+}
+.splash.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+.splash__inner{position:relative;text-align:center;padding:0 24px;animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.splash__logo{width:min(230px,60vw);height:auto;margin:0 auto 22px}
+.splash__tag{font-size:13px;font-weight:300;letter-spacing:.4px;color:var(--text)}
+.splash__tag b{font-weight:600;color:var(--accent)}
+.splash__bar{width:120px;height:3px;margin:26px auto 0;border-radius:99px;background:rgba(0,0,0,.08);overflow:hidden}
+.splash__bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--accent);animation:load 2.9s cubic-bezier(.3,.7,.3,1) forwards}
+@keyframes load{to{width:100%}}
+
+/* ================= STAGE / FRAME ================= */
+.stage{min-height:100vh;min-height:100dvh;display:flex;justify-content:center}
+.phone{width:100%;max-width:var(--frame);background:var(--bg);position:relative;min-height:100vh;min-height:100dvh}
+.view{padding:0 var(--gutter) calc(var(--nav-h) + 24px);animation:viewIn .28s cubic-bezier(.2,.8,.2,1) both}
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.view--sub{padding-top:18px}
+
+/* ================= BRAND HEADER ================= */
+.brand{padding:30px 0 0;text-align:center}
+.brand__logo{width:152px;height:auto;margin:0 auto}
+.brand__rule{margin:20px 0 0;height:0;border:0;border-top:1px solid var(--line-2);opacity:.55}
+
+/* ================= HEADER (home) ================= */
+.header{display:flex;align-items:center;gap:15px;padding:22px 0 0}
+.avatar{flex:0 0 auto;width:41px;height:41px;border-radius:50%;padding:2px;background:var(--accent)}
+.avatar__inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#d9d9d9;border:2px solid #fff}
+.avatar__inner img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.header__greet{flex:1 1 auto;min-width:0}
+.header__hello{font-size:14px;line-height:18px;font-weight:300;color:var(--text)}
+.header__name{font-size:14px;line-height:18px;font-weight:700}
+.bell{position:relative;flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:transform .15s ease}
+.bell:active{transform:scale(.93)}
+.bell img{width:14px;height:auto}
+.badge{
+  position:absolute;top:-4px;right:-6px;min-width:15px;height:15px;padding:0 4px;border-radius:99px;
+  background:var(--accent);color:#fff;font-size:9px;line-height:15px;font-weight:500;text-align:center;
+}
+
+/* ================= HERO ================= */
+.hero{margin-top:26px}
+.hero__title{font-size:27px;line-height:32px;font-weight:600;letter-spacing:-.1px}
+
+.slider{position:relative;margin-top:12px}
+.slider__track{display:flex;gap:12px;scroll-snap-type:x mandatory;padding-bottom:2px}
+.slider__track>*{flex:0 0 100%;scroll-snap-align:start}
+.dots{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:12px}
+.dots i{width:6px;height:6px;border-radius:99px;background:var(--dot);opacity:.85;transition:width .25s ease,background .25s ease;cursor:pointer}
+.dots i.is-on{width:24px;background:var(--accent);opacity:1}
+
+.banner{position:relative;height:148px;border-radius:14px;overflow:hidden;isolation:isolate;display:block;width:100%;background:#0d0d0d;transition:transform .15s ease}
+.banner:active{transform:scale(.99)}
+.banner__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;pointer-events:none}
+.banner__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,0) 70%)}
+.banner__body{position:absolute;left:20px;right:20px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+.banner__title{font-size:14.5px;line-height:20px;font-weight:500;color:#fff}
+.banner__title em{font-style:normal;color:var(--accent)}
+.banner__sub{margin-top:8px;font-size:13px;line-height:16px;font-weight:200;letter-spacing:.2px;color:#fff}
+.banner__btn{margin-top:9px;align-self:flex-start;padding:0 12px;height:20px;line-height:20px;border-radius:99px;background:var(--accent);color:#fff;font-size:9.5px;font-weight:600}
+
+/* ================= SECTION HEAD ================= */
+.section{margin-top:30px}
+.sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.sechead__title{font-size:23.5px;line-height:26px;font-weight:600;letter-spacing:-.2px}
+.sechead__title--caps{text-transform:uppercase;font-weight:700;letter-spacing:.1px}
+.link{flex:0 0 auto;font-size:14px;line-height:20px;font-weight:400;color:var(--accent);text-transform:uppercase;letter-spacing:.2px;padding:2px 0}
+.link:active{opacity:.6}
+.sechead__sub{margin-top:2px;font-size:14px;line-height:18px;font-weight:300;color:var(--text)}
+.rail{display:flex;gap:15px;margin-top:14px;padding:0 var(--gutter) 4px;margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));scroll-snap-type:x proximity;scroll-padding-left:var(--gutter)}
+.rail>*{scroll-snap-align:start}
+
+/* circular orange arrow */
+.go{flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff}
+.go svg{width:8px;height:8px;display:block}
+.go--lg{width:26px;height:26px}
+.go--lg svg{width:10px;height:10px}
+
+/* ================= WHAT'S ON (event tiles) ================= */
+.event{flex:0 0 150px;height:146px;position:relative;border-radius:11px;overflow:hidden;background:#222;transition:transform .15s ease}
+.event:active{transform:scale(.97)}
+.event img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.event__foot{position:absolute;left:0;right:0;bottom:0;padding:10px 9px 8px 11px;display:flex;align-items:flex-end;justify-content:space-between;gap:6px;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 100%)}
+.event__meta{color:#fff;font-size:9px;line-height:13px;font-weight:400;text-transform:uppercase;letter-spacing:.2px}
+.event__meta span{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.event__meta svg{width:9px;height:9px;flex:0 0 auto}
+
+/* ================= CLASS TILES ================= */
+.ctile{flex:0 0 150px;border-radius:11px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .15s ease}
+.ctile:active{transform:scale(.97)}
+.ctile__img{height:139px;background:#ddd}
+.ctile__img img{width:100%;height:100%;object-fit:cover}
+.ctile__body{padding:11px 11px 10px 12px}
+.ctile__top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ctile__title{font-size:14px;line-height:18px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ctile__foot{margin-top:9px;display:flex;align-items:flex-end;justify-content:space-between;gap:8px;min-height:24px}
+.ctile__logo{height:22px;width:auto;max-width:72px;object-fit:contain;object-position:left bottom}
+.ctile__prov{font-size:9px;line-height:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;max-width:76px}
+.rating{display:flex;align-items:center;gap:3px;font-size:10px;line-height:12px;font-weight:500;color:var(--text);flex:0 0 auto}
+.rating svg{width:10px;height:10px;fill:var(--star)}
+
+/* ================= VENUE CARDS ================= */
+.vcard{display:flex;gap:16px;align-items:stretch;width:100%;padding:8px;background:#fff;border-radius:11px;transition:transform .15s ease}
+.vcard:active{transform:scale(.99)}
+.vcard+.vcard{margin-top:10px}
+.vcard__img{flex:0 0 134px;height:90px;border-radius:8px;overflow:hidden;background:#ddd}
+.vcard__img img{width:100%;height:100%;object-fit:cover}
+.vcard__body{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;padding:12px 8px 8px 0}
+.vcard__top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.vcard__title{font-size:14px;line-height:18px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vcard__desc{margin-top:9px;font-size:8.5px;line-height:11.5px;font-weight:300;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ================= PARTNER CHALLENGES ================= */
+.ptile{flex:0 0 150px;height:150px;position:relative;border-radius:11px;overflow:hidden;background:#333;transition:transform .15s ease}
+.ptile:active{transform:scale(.97)}
+.ptile img{width:100%;height:100%;object-fit:cover}
+.ptile__foot{position:absolute;left:0;right:0;bottom:0;padding:9px 9px 9px 11px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.ptile__cap{color:#fff;font-size:9px;line-height:12px;font-weight:400;text-transform:uppercase;letter-spacing:0;white-space:nowrap;text-shadow:0 1px 6px rgba(0,0,0,.35)}
+
+/* ================= REWARDS ================= */
+.reward{display:flex;align-items:center;gap:0;width:100%;height:73px;padding:0 18px 0 22px;background:#fff;border-radius:15px;transition:transform .15s ease}
+.reward:active{transform:scale(.99)}
+.reward+.reward{margin-top:8px}
+.reward__icon{flex:0 0 92px;display:flex;align-items:center;justify-content:flex-start}
+.reward__icon img{height:44px;width:auto;max-width:46px;object-fit:contain}
+.reward__body{flex:1 1 auto;min-width:0}
+.reward__title{font-size:14px;line-height:17px;font-weight:400}
+.reward__sub{margin-top:2px;font-size:8.5px;line-height:11px;font-weight:300;color:var(--muted)}
+.reward__pts{font-size:27px;line-height:27px;font-weight:700;letter-spacing:-.2px}
+
+/* ================= BOTTOM NAV ================= */
+.nav{
+  position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:120;width:100%;max-width:var(--frame);
+  height:var(--nav-h);padding:14px 14px calc(12px + env(safe-area-inset-bottom));
+  background:var(--bg);display:flex;justify-content:space-between;align-items:flex-start;
+  box-shadow:0 -14px 22px -14px rgba(0,0,0,.10);
+}
+.nav__item{flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);transition:color .15s ease}
+.nav__item.is-on{color:var(--accent)}
+.nav__ico{display:block;height:30px;width:36px;overflow:visible}
+.nav__label{font-size:12px;line-height:14px;font-weight:400;white-space:nowrap}
+
+/* ================= TOP BAR (sub pages) ================= */
+.topbar{display:flex;align-items:center;gap:12px;height:44px;margin-bottom:18px}
+.backbtn{width:36px;height:36px;flex:0 0 auto;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--text);transition:transform .15s ease}
+.backbtn:active{transform:scale(.92)}
+.backbtn svg{width:10px;height:10px}
+.topbar__title{flex:1 1 auto;min-width:0;font-size:18px;line-height:22px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar__sub{font-size:11px;line-height:14px;font-weight:300;color:var(--muted-2)}
+
+/* ================= BUTTONS ================= */
+.btn{border-radius:99px;font-weight:600;font-size:12px;line-height:16px;white-space:nowrap;transition:transform .15s ease,filter .15s ease;text-align:center;display:inline-block}
+.btn:active{transform:scale(.96)}
+.btn--lg{display:block;width:100%;padding:14px 18px;font-size:14px;color:#fff;background:var(--accent);box-shadow:0 10px 22px rgba(236,99,55,.28)}
+.btn--lg[disabled]{background:#d6d6d6;color:#fff;box-shadow:none;cursor:not-allowed}
+.btn--outline{display:block;width:100%;padding:13px 18px;font-size:13px;border:1px solid var(--line);color:var(--text);background:#fff}
+
+/* ================= GENERIC LIST CARD (sub pages) ================= */
+.card{display:flex;gap:12px;padding:10px;background:#fff;border-radius:var(--r-card);width:100%;transition:transform .15s ease}
+.card:active{transform:scale(.99)}
+.card+.card{margin-top:10px}
+.card__thumb{position:relative;flex:0 0 auto;width:72px;height:72px;border-radius:10px;overflow:hidden;background:#ddd}
+.card__thumb img{width:100%;height:100%;object-fit:cover}
+.card__body{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;justify-content:space-between}
+.card__top{display:flex;align-items:flex-start;gap:8px}
+.card__title{flex:1 1 auto;min-width:0;font-size:14px;line-height:18px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card__meta{margin-top:2px;font-size:10.5px;line-height:14px;font-weight:300;color:var(--muted-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card__foot{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{display:flex;align-items:baseline;gap:4px}
+.price b{font-size:16px;line-height:16px;font-weight:700}
+.price span{font-size:8.5px;line-height:9px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.tag{flex:0 0 auto;padding:2px 6px;border-radius:99px;font-size:8px;line-height:12px;letter-spacing:.3px;color:#fff;background:var(--accent);text-transform:uppercase}
+
+/* ================= CLASSES PAGE: chips + 3-col grid ================= */
+.chips{display:flex;gap:8px;padding-bottom:4px;margin-bottom:14px}
+.chip{flex:0 0 auto;padding:7px 14px;border-radius:99px;background:#fff;color:var(--muted-2);font-size:11.5px;font-weight:500;white-space:nowrap;transition:all .18s ease}
+.chip.is-on{background:var(--accent);color:#fff}
+.chip:active{transform:scale(.95)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-height:calc(100vh - 240px);padding:2px 2px 20px;overscroll-behavior:contain}
+.tile{background:#fff;border-radius:11px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s ease}
+.tile:active{transform:scale(.97)}
+.tile__img{position:relative;width:100%;aspect-ratio:1;background:#ddd;overflow:hidden}
+.tile__img img{width:100%;height:100%;object-fit:cover}
+.tile__tag{position:absolute;top:5px;left:5px;padding:2px 5px;border-radius:99px;background:var(--accent);color:#fff;font-size:7px;letter-spacing:.3px;text-transform:uppercase}
+.tile__body{padding:8px 8px 9px;display:flex;flex-direction:column;gap:3px;flex:1 1 auto}
+.tile__title{font-size:11px;line-height:13.5px;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile__meta{font-size:8.5px;line-height:11px;font-weight:300;color:var(--muted-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile__foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:4px;padding-top:5px}
+.tile__price{font-size:12px;line-height:12px;font-weight:700}
+.gridnote{display:none;margin-top:10px;text-align:center;font-size:10px;letter-spacing:.4px;color:var(--muted)}
+.gridnote.is-on{display:block}
+
+/* ================= DETAIL PAGES ================= */
+.dhero{position:relative;height:200px;border-radius:14px;overflow:hidden;margin-bottom:18px;background:#ddd}
+.dhero img{width:100%;height:100%;object-fit:cover}
+.dhero__scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.15) 55%,rgba(0,0,0,0) 100%)}
+.dhero__body{position:absolute;left:16px;right:16px;bottom:14px}
+.pill{display:inline-block;padding:3px 9px;border-radius:99px;background:var(--accent);color:#fff;font-size:9px;line-height:13px;letter-spacing:.4px;text-transform:uppercase;font-weight:500}
+.dhero__title{margin-top:8px;font-size:22px;line-height:26px;font-weight:600;color:#fff}
+.dhero__meta{margin-top:5px;font-size:11.5px;font-weight:300;color:rgba(255,255,255,.9)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.stat{padding:12px 10px;border-radius:12px;background:#fff;text-align:center}
+.stat__v{font-size:20px;line-height:22px;font-weight:700}
+.stat__v--accent{color:var(--accent)}
+.stat__k{margin-top:3px;font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+
+.block{margin-bottom:22px}
+.block__h{font-size:15px;font-weight:600;margin-bottom:10px}
+.prose{font-size:12.5px;line-height:19px;font-weight:300;color:var(--muted-2)}
+.bullets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.bullets li{display:flex;gap:10px;font-size:12.5px;line-height:18px;font-weight:300;color:var(--muted-2)}
+.bullets li::before{content:'✓';color:var(--accent);font-weight:700;flex:0 0 auto}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:12px}
+.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start}
+.steps li::before{content:counter(s);flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:grid;place-items:center;font-weight:600}
+.steps p{font-size:12.5px;line-height:18px;font-weight:300;color:var(--muted-2)}
+.steps b{display:block;color:var(--text);font-size:13px;font-weight:500;margin-bottom:2px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border-bottom:0}
+.kv__k{font-size:12.5px;font-weight:300;color:var(--muted-2)}
+.kv__v{font-size:12.5px;font-weight:500;text-align:right}
+
+/* ================= CHALLENGE DETAIL / PROGRESS ================= */
+.quest{padding:16px;border-radius:15px;background:#fff;width:100%;display:block;text-align:left}
+.quest__top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.quest__count{font-size:11px;font-weight:300;color:var(--muted-2)}
+.quest__title{margin-top:12px;font-size:16px;line-height:22px;font-weight:600}
+.quest__reward{margin-top:3px;font-size:11.5px;font-weight:300;color:var(--muted-2)}
+.progress{margin-top:14px;height:6px;border-radius:99px;background:var(--bg);overflow:hidden}
+.progress i{display:block;height:100%;border-radius:99px;background:var(--accent);transition:width .9s cubic-bezier(.3,.7,.3,1)}
+.quest__foot{margin-top:8px;display:flex;justify-content:space-between;font-size:10.5px;font-weight:300;color:var(--muted-2)}
+.chrow{display:flex;flex-direction:column;gap:10px;padding:10px;background:#fff;border-radius:var(--r-card);width:100%}
+.chrow+.chrow{margin-top:10px}
+.chrow__head{display:flex;gap:12px;align-items:center}
+.chrow__img{flex:0 0 auto;width:64px;height:64px;border-radius:10px;overflow:hidden;background:#ddd}
+.chrow__img img{width:100%;height:100%;object-fit:cover}
+
+/* ================= BOOKING ================= */
+.cal{display:flex;gap:8px;padding:2px 2px 6px}
+.cal__day{flex:0 0 auto;width:54px;padding:10px 0 11px;border-radius:12px;text-align:center;background:#fff;transition:all .18s ease}
+.cal__day.is-on{background:var(--accent);color:#fff}
+.cal__day:active{transform:scale(.95)}
+.cal__dow{font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.cal__day.is-on .cal__dow{color:rgba(255,255,255,.85)}
+.cal__num{margin-top:3px;font-size:19px;line-height:20px;font-weight:700}
+.cal__mon{font-size:8.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.cal__day.is-on .cal__mon{color:rgba(255,255,255,.8)}
+.durations{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dur{padding:13px 8px;border-radius:12px;text-align:center;background:#fff;border:1px solid transparent;transition:all .18s ease}
+.dur.is-on{border-color:var(--accent);color:var(--accent)}
+.dur:active{transform:scale(.96)}
+.dur__v{font-size:20px;line-height:20px;font-weight:700}
+.dur__k{margin-top:2px;font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-height:236px;padding:2px 2px 6px;overscroll-behavior:contain}
+.slot{padding:10px 4px;border-radius:10px;text-align:center;background:#fff;font-size:12px;font-weight:500;transition:all .16s ease}
+.slot.is-on{background:var(--accent);color:#fff}
+.slot.is-off{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.slot:not(.is-off):active{transform:scale(.95)}
+.slotnote{margin-top:10px;display:flex;gap:14px;justify-content:center;font-size:9.5px;font-weight:300;color:var(--muted-2)}
+.slotnote i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.summary{padding:14px 16px;border-radius:15px;background:#fff;margin-bottom:14px}
+.summary__row{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;padding:5px 0}
+.summary__row span:first-child{font-weight:300;color:var(--muted-2)}
+.summary__row span:last-child{font-weight:500}
+.summary__total{margin-top:8px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.summary__total b{font-size:24px;font-weight:700;color:var(--accent)}
+
+/* ================= SHEET / TOAST ================= */
+.sheet{position:fixed;inset:0;z-index:150;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.45);backdrop-filter:blur(3px);animation:fadeIn .22s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.sheet__card{width:100%;max-width:var(--frame);background:#fff;border-radius:22px 22px 0 0;padding:26px 22px 30px;text-align:center;animation:sheetUp .32s cubic-bezier(.2,.9,.25,1) both}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:none}}
+.sheet__logo{width:120px;height:auto;margin:0 auto 18px}
+.sheet__icon{width:56px;height:56px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff}
+.sheet__icon svg{width:22px;height:22px}
+.sheet__title{font-size:20px;font-weight:600}
+.sheet__sub{margin-top:6px;font-size:12.5px;line-height:18px;font-weight:300;color:var(--muted-2)}
+.sheet__box{margin:18px 0 20px;padding:4px 16px;border-radius:14px;background:var(--bg);text-align:left}
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + 12px);transform:translateX(-50%);z-index:160;padding:11px 20px;border-radius:99px;background:var(--text);color:#fff;font-size:12.5px;font-weight:500;box-shadow:0 12px 30px rgba(0,0,0,.25);animation:toastIn .3s ease both;white-space:nowrap}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
+.empty{padding:48px 20px;text-align:center;color:var(--muted-2);font-size:12.5px;font-weight:300}
+
+/* ================= DESKTOP ================= */
+@media (min-width:768px){
+  body{background:#dcdcdc}
+  /* A real phone: 440 × 953 (19.5:9, the .ai artboard ratio). If the window is
+     shorter than that, the whole phone is scaled down by JS (--phone-scale)
+     so it always keeps its proportions. */
+  .stage{align-items:flex-start;padding:24px;min-height:100vh}
+  .phone{
+    --phone-h:953px;
+    flex:0 0 auto;width:var(--frame);height:var(--phone-h);min-height:0;
+    border-radius:52px;border:12px solid #141414;
+    box-shadow:0 0 0 2px #3a3a3a,0 40px 90px rgba(0,0,0,.35);
+    overflow-y:auto;scrollbar-width:none;display:flex;flex-direction:column;
+    transform:scale(var(--phone-scale,1));transform-origin:top center;
+    margin-bottom:calc((var(--phone-scale,1) - 1) * var(--phone-h));
+  }
+  .phone::-webkit-scrollbar{display:none}
+  .phone>#app{flex:1 0 auto}
+  .nav{position:sticky;transform:none;left:auto;bottom:0;flex:0 0 auto;margin-top:calc(-1 * var(--nav-h))}
+  .grid3{max-height:560px}
+  .sheet{align-items:center}
+  .sheet__card{border-radius:22px;max-width:400px}
+  .toast{bottom:40px}
+}
+@media (max-width:359px){
+  :root{--gutter:14px}
+  .hero__title{font-size:24px;line-height:28px}
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .nav__label{font-size:10.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="splash" id="splash">
+  <div class="splash__inner">
+    <img class="splash__logo" src="assets/images/logo.png" alt="Active Abu Dhabi">
+    <p class="splash__tag">Move. Live. <b>Belong.</b></p>
+    <div class="splash__bar"><i></i></div>
+  </div>
+</div>
+
+<div class="stage">
+  <main class="phone" id="phone">
+    <div id="app"></div>
+    <nav class="nav" id="nav" aria-label="Main">
+      <button class="nav__item" data-nav="#/"><svg class="nav__ico" aria-hidden="true" viewBox="86.87 4935.57 71.16 76.59"><path fill="currentColor" d="M 127.203125,4980.234375 C 130.570312,4980.234375 133.199219,4983.085938 133.316406,4986.363281 L 133.316406,5003.738281 L 149.605469,5003.738281 L 149.609375,4969.785156 C 149.464844,4967.675781 148.691406,4965.460938 147.0,4964.125 L 122.457031,4944.753906 L 98.234375,4963.871094 C 96.457031,4965.277344 95.492188,4967.558594 95.300781,4969.777344 L 95.304688,5003.738281 L 111.59375,5003.738281 L 111.59375,4986.289062 C 111.75,4983.003906 114.429688,4980.226562 117.753906,4980.226562 L 127.203125,4980.234375 M 126.980469,4985.636719 L 117.902344,4985.640625 C 117.371094,4985.640625 117.023438,4986.078125 117.023438,4986.585938 L 117.019531,5004.742188 C 117.019531,5005.941406 116.539062,5007.046875 115.726562,5007.867188 C 114.867188,5008.742188 113.703125,5009.167969 112.453125,5009.167969 L 94.445312,5009.167969 C 93.144531,5009.167969 91.929688,5008.699219 91.066406,5007.757812 C 90.324219,5006.953125 89.875,5005.882812 89.875,5004.738281 L 89.898438,4969.707031 C 89.902344,4965.796875 91.886719,4961.964844 94.933594,4959.558594 L 120.652344,4939.242188 C 121.6875,4938.425781 123.070312,4938.3125 124.136719,4939.15625 L 149.667969,4959.277344 C 151.152344,4960.453125 152.441406,4961.753906 153.347656,4963.445312 C 154.410156,4965.429688 155.035156,4967.636719 155.035156,4969.9375 L 155.035156,5004.738281 C 155.035156,5005.882812 154.589844,5006.949219 153.847656,5007.757812 C 152.980469,5008.699219 151.769531,5009.167969 150.464844,5009.167969 L 132.457031,5009.167969 C 129.867188,5009.167969 127.894531,5007.234375 127.894531,5004.742188 L 127.882812,4986.519531 C 127.882812,4986.023438 127.492188,4985.636719 126.980469,4985.636719"/></svg><span class="nav__label">Home</span></button>
+      <button class="nav__item" data-nav="#/events"><svg class="nav__ico" aria-hidden="true" viewBox="256.42 4935.57 76.59 76.59"><path fill="currentColor" d="M 317.097656,5003.371094 C 320.777344,5003.457031 324.152344,5000.703125 324.15625,4996.964844 L 324.203125,4960.082031 L 265.234375,4960.082031 L 265.277344,4996.96875 C 265.28125,5000.796875 268.8125,5003.527344 272.457031,5003.371094 L 317.097656,5003.371094 M 324.152344,4950.558594 C 324.109375,4947.367188 321.160156,4944.414062 317.816406,4944.414062 L 271.617188,4944.417969 C 268.175781,4944.417969 265.425781,4947.503906 265.261719,4950.691406 C 265.191406,4952.03125 265.230469,4953.101562 265.265625,4954.261719 L 324.203125,4954.261719 L 324.152344,4950.558594 M 317.964844,5009.148438 L 271.59375,5009.167969 C 265.097656,5009.171875 259.421875,5003.488281 259.421875,4996.996094 L 259.421875,4950.75 C 259.421875,4944.25 265.097656,4938.574219 271.59375,4938.574219 L 317.839844,4938.574219 C 324.339844,4938.574219 330.011719,4944.25 330.011719,4950.746094 L 330.011719,4997.0 C 330.011719,5003.363281 324.484375,5009.144531 317.964844,5009.148438"/><path fill="currentColor" d="M 279.730469,4982.652344 C 278.558594,4981.484375 278.820312,4979.6875 279.792969,4978.683594 C 280.734375,4977.71875 282.546875,4977.269531 283.675781,4978.390625 L 291.660156,4986.324219 L 307.082031,4969.171875 C 308.21875,4967.910156 309.773438,4967.515625 311.195312,4968.507812 C 312.347656,4969.308594 312.996094,4971.347656 311.828125,4972.648438 L 294.273438,4992.195312 C 293.230469,4993.359375 291.324219,4994.195312 290.015625,4992.894531 L 279.730469,4982.652344"/></svg><span class="nav__label">Events</span></button>
+      <button class="nav__item" data-nav="#/classes"><svg class="nav__ico" aria-hidden="true" viewBox="426.94 4952.20 90.86 43.35"><path fill="currentColor" d="M 509.710938,4975.546875 C 510.839844,4975.5 511.40625,4974.660156 511.375,4973.785156 C 511.34375,4972.90625 510.632812,4972.183594 509.707031,4972.203125 L 509.710938,4975.546875 M 487.628906,4975.566406 L 487.628906,4972.171875 L 457.101562,4972.171875 L 457.101562,4975.566406 L 487.628906,4975.566406 M 435.019531,4972.191406 C 433.890625,4972.242188 433.324219,4973.078125 433.355469,4973.953125 C 433.386719,4974.832031 434.097656,4975.554688 435.023438,4975.535156 L 435.019531,4972.191406 M 506.316406,4982.21875 L 506.316406,4965.445312 C 506.316406,4964.429688 505.507812,4963.683594 504.535156,4963.6875 L 501.222656,4963.707031 L 501.222656,4984.03125 L 504.535156,4984.050781 C 505.519531,4984.058594 506.316406,4983.324219 506.316406,4982.21875 M 440.261719,4984.058594 L 443.507812,4984.027344 L 443.507812,4963.707031 L 440.179688,4963.6875 C 439.34375,4963.683594 438.417969,4964.347656 438.417969,4965.300781 L 438.414062,4982.292969 C 438.410156,4983.316406 439.21875,4984.066406 440.261719,4984.058594 M 496.082031,4989.144531 C 497.039062,4989.148438 497.828125,4988.382812 497.828125,4987.378906 L 497.828125,4960.359375 C 497.828125,4959.351562 497.039062,4958.59375 496.082031,4958.597656 L 492.761719,4958.605469 C 491.710938,4958.609375 491.039062,4959.429688 491.039062,4960.460938 L 491.039062,4987.277344 C 491.039062,4988.308594 491.710938,4989.128906 492.761719,4989.132812 L 496.082031,4989.144531 M 452.070312,4989.121094 C 452.976562,4989.113281 453.6875,4988.320312 453.6875,4987.445312 L 453.691406,4960.460938 C 453.691406,4959.429688 453.019531,4958.609375 451.96875,4958.605469 L 448.648438,4958.597656 C 447.691406,4958.59375 446.902344,4959.351562 446.902344,4960.359375 L 446.902344,4987.378906 C 446.902344,4988.382812 447.695312,4989.152344 448.644531,4989.144531 L 452.070312,4989.121094 M 514.800781,4973.039062 L 514.800781,4974.699219 C 514.289062,4977.066406 512.363281,4978.921875 509.722656,4978.941406 L 509.703125,4982.339844 C 509.683594,4985.109375 507.511719,4987.394531 504.691406,4987.425781 L 501.210938,4987.464844 C 501.167969,4990.261719 498.988281,4992.503906 496.195312,4992.523438 L 492.785156,4992.546875 C 489.972656,4992.5 487.660156,4990.335938 487.652344,4987.453125 L 487.632812,4978.964844 L 457.09375,4978.964844 L 457.058594,4987.605469 C 457.050781,4990.425781 454.671875,4992.5 451.949219,4992.546875 L 448.535156,4992.523438 C 445.742188,4992.503906 443.5625,4990.273438 443.515625,4987.457031 L 440.207031,4987.445312 C 437.226562,4987.433594 435.03125,4985.109375 435.015625,4982.160156 L 435.0,4978.941406 C 432.074219,4978.917969 429.894531,4976.550781 429.9375,4973.789062 C 429.980469,4971.101562 432.128906,4968.816406 435.0,4968.800781 L 435.015625,4965.578125 C 435.027344,4962.625 437.226562,4960.308594 440.207031,4960.296875 L 443.515625,4960.285156 C 443.5625,4957.460938 445.738281,4955.234375 448.535156,4955.21875 L 452.082031,4955.199219 C 454.839844,4955.3125 457.070312,4957.453125 457.074219,4960.285156 L 457.097656,4968.777344 L 487.636719,4968.777344 L 487.667969,4960.132812 C 487.679688,4957.363281 489.972656,4955.3125 492.644531,4955.199219 L 496.195312,4955.21875 C 498.992188,4955.234375 501.167969,4957.472656 501.214844,4960.28125 L 504.851562,4960.328125 C 507.605469,4960.363281 509.683594,4962.699219 509.703125,4965.398438 L 509.722656,4968.800781 C 512.363281,4968.816406 514.289062,4970.671875 514.800781,4973.039062"/></svg><span class="nav__label">Classes</span></button>
+      <button class="nav__item" data-nav="#/rewards"><svg class="nav__ico" aria-hidden="true" viewBox="617.86 4935.57 64.33 76.59"><path fill="currentColor" d="M 661.320312,5005.460938 L 661.324219,4996.464844 L 638.660156,4996.46875 L 638.671875,5005.464844 L 661.320312,5005.460938 M 656.558594,4992.746094 L 656.554688,4990.550781 C 653.203125,4988.035156 651.273438,4984.214844 650.867188,4980.09375 L 649.101562,4980.113281 C 648.6875,4984.316406 646.722656,4988.03125 643.429688,4990.558594 L 643.425781,4992.746094 L 656.558594,4992.746094 M 667.792969,4968.539062 C 671.738281,4965.109375 674.433594,4960.503906 675.261719,4955.371094 C 675.554688,4953.542969 675.5625,4951.769531 675.070312,4950.074219 C 674.507812,4948.125 672.234375,4949.28125 670.410156,4950.394531 C 670.003906,4957.605469 668.402344,4964.589844 664.433594,4970.742188 C 665.714844,4970.128906 666.664062,4969.421875 667.792969,4968.539062 M 635.628906,4970.769531 C 631.648438,4964.699219 630.019531,4957.613281 629.625,4950.429688 C 628.71875,4949.789062 627.683594,4949.292969 626.59375,4949.039062 C 625.769531,4948.84375 625.1875,4949.324219 624.941406,4950.089844 C 624.511719,4951.625 624.484375,4953.1875 624.695312,4954.832031 C 625.519531,4961.285156 629.757812,4967.773438 635.628906,4970.769531 M 652.347656,4976.308594 C 664.207031,4971.183594 667.308594,4956.433594 666.667969,4944.523438 C 661.4375,4942.90625 655.949219,4942.492188 650.460938,4942.261719 C 644.734375,4942.398438 638.921875,4942.839844 633.363281,4944.511719 C 632.707031,4956.378906 635.816406,4971.195312 647.695312,4976.316406 C 649.117188,4976.929688 650.863281,4976.949219 652.347656,4976.308594 M 663.457031,5009.164062 L 636.585938,5009.167969 C 635.578125,5009.167969 634.921875,5008.203125 634.921875,5007.289062 L 634.921875,4994.605469 C 634.921875,4993.695312 635.660156,4992.78125 636.59375,4992.773438 L 639.671875,4992.738281 L 639.679688,4988.429688 C 640.808594,4987.925781 641.675781,4987.257812 642.503906,4986.359375 C 644.265625,4984.46875 645.199219,4982.015625 645.421875,4979.429688 C 643.582031,4978.484375 641.945312,4977.414062 640.347656,4976.089844 C 636.957031,4975.691406 633.894531,4974.398438 631.105469,4972.40625 C 624.605469,4967.644531 620.105469,4959.035156 620.960938,4950.9375 C 621.085938,4949.765625 621.441406,4948.664062 621.960938,4947.648438 C 623.734375,4944.871094 626.621094,4944.828125 629.53125,4946.097656 L 629.855469,4941.84375 C 632.089844,4940.945312 634.28125,4940.28125 636.707031,4939.832031 C 645.769531,4938.160156 654.558594,4938.128906 663.621094,4939.894531 C 665.925781,4940.34375 668.011719,4940.96875 670.15625,4941.835938 L 670.496094,4946.101562 C 673.699219,4944.671875 676.808594,4945.03125 678.3125,4948.160156 C 679.539062,4950.90625 679.324219,4954.765625 678.601562,4957.746094 C 677.226562,4963.40625 674.011719,4968.4375 669.4375,4972.019531 C 666.53125,4974.238281 663.257812,4975.664062 659.648438,4976.101562 C 658.085938,4977.429688 656.476562,4978.484375 654.578125,4979.410156 C 654.796875,4983.117188 656.824219,4986.84375 660.308594,4988.4375 L 660.3125,4992.746094 L 663.171875,4992.746094 C 663.980469,4992.746094 665.019531,4993.394531 665.019531,4994.347656 L 665.035156,5007.292969 C 665.039062,5008.101562 664.5,5009.164062 663.457031,5009.164062"/><path fill="currentColor" d="M 650.019531,4962.324219 L 644.445312,4965.226562 L 645.496094,4959.054688 L 641.007812,4954.6875 L 647.214844,4953.777344 L 649.984375,4948.167969 L 652.769531,4953.78125 L 658.960938,4954.683594 L 654.484375,4959.058594 L 655.519531,4965.234375 L 650.019531,4962.324219"/></svg><span class="nav__label">Rewards</span></button>
+      <button class="nav__item" data-nav="#/challenges"><svg class="nav__ico" aria-hidden="true" viewBox="799.99 4939.26 55.37 66.76"><path fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M 802.9882817183073,4984.035156523821 L 802.9882817183073,4947.9570148535495 C 806.78906506426,4944.1601376155495 812.484379921345,4942.26169899655 818.17969477843,4942.26169899655 C 829.57423216042,4942.26169899655 837.167985636505,4951.753891091635 852.359398256665,4944.1601376155495 L 852.359398256665,4982.136718331785 C 837.167985636505,4989.730471807869 829.57423216042,4978.339841093784 818.17969477843,4978.339841093784 C 814.3828185403449,4978.339841093784 806.78906506426,4980.238279712785 802.9882817183073,4984.035156523821 M 802.9882817183073,5003.023446808945 L 802.9882817183073,4984.035156523821"/></svg><span class="nav__label">Challenges</span></button>
+      <button class="nav__item" data-nav="#/profile"><svg class="nav__ico" aria-hidden="true" viewBox="958.20 4935.57 77.11 74.69"><path fill="currentColor" d="M 995.679688,4974.160156 C 1005.222656,4974.816406 1012.832031,4966.753906 1011.9375,4957.464844 C 1011.054688,4948.238281 1002.113281,4941.777344 992.964844,4944.136719 C 985.667969,4946.015625 980.863281,4952.921875 981.566406,4960.371094 C 982.257812,4967.679688 988.128906,4973.640625 995.679688,4974.160156 M 973.398438,4977.882812 C 974.554688,4976.871094 976.148438,4977.136719 977.007812,4978.175781 C 977.867188,4979.210938 977.777344,4980.765625 976.667969,4981.742188 C 970.75,4986.957031 967.023438,4994.207031 966.375,5002.210938 L 1027.132812,5002.207031 C 1026.210938,4990.375 1018.453125,4980.292969 1007.503906,4976.152344 C 999.023438,4981.507812 988.003906,4979.816406 981.445312,4972.289062 C 975.773438,4965.777344 974.820312,4956.390625 979.105469,4948.863281 C 983.273438,4941.546875 991.640625,4937.4375 1000.085938,4938.851562 C 1007.210938,4940.042969 1013.101562,4945.019531 1015.601562,4951.347656 C 1018.535156,4958.769531 1016.976562,4966.679688 1011.867188,4972.5 C 1024.386719,4978.410156 1032.320312,4990.933594 1032.308594,5004.753906 C 1032.308594,5006.125 1031.230469,5007.269531 1029.777344,5007.269531 L 963.734375,5007.269531 C 962.277344,5007.269531 961.195312,5006.132812 961.199219,5004.726562 C 961.210938,4994.421875 965.613281,4984.683594 973.398438,4977.882812"/></svg><span class="nav__label">Profile</span></button>
+    </nav>
+  </main>
+</div>
+
+<noscript>
+  <p style="padding:40px 20px;text-align:center;color:#8a8a8a;font-family:sans-serif">This site needs JavaScript enabled.</p>
+</noscript>
+
+<script>
+/* =========================================================
+   Active Abu Dhabi — data, router and views
+   ========================================================= */
+(function () {
+'use strict';
+
+var IMG = 'assets/images/';
+var SPLASH_MS = 3000;
+var USER = { name:'Ahmed Ali', avatar:'avatar-rashid.jpg', points:2350 };
+
+/* ---------------------------------------------------------
+   DATA
+   --------------------------------------------------------- */
+var EVENTS = [
+  { id:'comiccon', img:'event-comic-con.jpg', title:'Middle East Film & Comic Con', date:'11-13 Sep 2026', where:'ADNEC Center',
+    pill:'Pop culture', price:95, venue:'ADNEC Center, Khaleej Al Arabi St',
+    about:'Three days of comics, cosplay, gaming and celebrity panels under one roof. Day passes include access to the main hall, artist alley and the cosplay arena.' },
+  { id:'supercup', img:'event-supercup.jpg', title:'EuroLeague SuperCup Abu Dhabi 2026', date:'18-19 Sep 2026', where:'Etihad Arena',
+    pill:'Basketball', price:120, venue:'Etihad Arena, Yas Island',
+    about:'Don\'t miss the first EuroLeague basketball title of the season. Olympiacos, Dubai Basketball, Real Madrid and Fenerbahçe meet on Yas Island for a two-night SuperCup.' },
+  { id:'grandslam', img:'event-judo-grand-slam.jpg', title:'Abu Dhabi Grand Slam Prime', date:'14-16 Nov 2026', where:'Mubadala Arena',
+    pill:'Jiu-Jitsu', price:60, venue:'Mubadala Arena, Zayed Sports City',
+    about:'The world\'s best jiu-jitsu athletes return to Abu Dhabi. Watch every weight category on the mats, with finals and medal ceremonies each evening.' }
+];
+
+var CLASSES = [
+  { id:'swimming', title:'Swimming', where:'Abu Dhabi Aquatics Club', when:'Mon–Sat', price:90, unit:'AED/CLASS',
+    rating:4.8, tag:'', sport:'Water', img:'class-swimming.jpg', logo:'logo-ad-aquatics.png', provider:'Abu Dhabi Aquatics Club',
+    coach:'Coach Ben K.', level:'All levels', dur:'60 min',
+    about:'Stroke technique, breathing and endurance sets in a 50 m pool, split by lane speed so every swimmer trains at the right pace.',
+    includes:['Lane-speed groups','Stroke video analysis','Kickboards and fins provided','Free first session'] },
+  { id:'yoga', title:'Yoga', where:'The Bridge', when:'Daily', price:65, unit:'AED/CLASS',
+    rating:5.0, tag:'', sport:'Mind & Body', img:'class-yoga.jpg', logo:'logo-the-bridge.png', provider:'The Bridge',
+    coach:'Coach Leen M.', level:'All levels', dur:'50 min',
+    about:'A slow sunrise flow weighted towards hips and shoulders — the recovery session for everything else you train.',
+    includes:['Mats provided','Sunrise and sunset sessions','Breath-work close','Free herbal tea after'] },
+  { id:'grappling', title:'Grappling', where:'UAEJJ Fitness', when:'Tue/Thu/Sat', price:75, unit:'AED/CLASS',
+    rating:4.9, tag:'', sport:'Combat', img:'class-grappling.jpg', logo:'logo-uaejj.png', provider:'UAEJJ Fitness',
+    coach:'Sensei Aiko T.', level:'Beginner', dur:'60 min',
+    about:'Break-falls first, then grips, throws and ground control. A calm, technical class that builds towards your first grading.',
+    includes:['Gi rental included','Grading pathway to yellow belt','Mixed adult and teen groups','Mat etiquette workshop'] },
+  { id:'boxing', title:'Boxing Fundamentals', where:'Al Reem', when:'Mon/Wed', price:90, unit:'AED/CLASS',
+    rating:4.9, tag:'Selling fast', sport:'Combat', img:'class-boxing.jpg', provider:'Reem Boxing Club', coach:'Coach Malik R.', level:'All levels', dur:'60 min',
+    about:'Learn stance, footwork and the core punch combinations in a small-group session built for beginners moving into intermediate work.',
+    includes:['Wraps and gloves provided','Max 12 people per session','Conditioning finisher every class','Free first-timer assessment'] },
+  { id:'basketball', title:'Elite Basketball Camp', where:'Zayed Sports City', when:'Daily', price:140, unit:'AED/CLASS',
+    rating:5.0, tag:'Bestseller', sport:'Court', img:'class-basketball.jpg', provider:'Zayed Sports City', coach:'Coach Dwayne P.', level:'Intermediate+', dur:'90 min',
+    about:'A high-tempo camp covering shooting mechanics, pick-and-roll reads and live 5-on-5 play, filmed for weekly video feedback.',
+    includes:['Indoor air-conditioned court','Video review after each session','Strength and mobility block','Match-play every Thursday'] },
+  { id:'league', title:'Night 7-a-side League', where:'Yas Island', when:'Weekly', price:55, unit:'AED/MATCH',
+    rating:4.7, tag:'Filling up', sport:'Football', img:'class-league.jpg', provider:'Yas Leagues', coach:'League office', level:'All levels', dur:'2 × 25 min',
+    about:'Floodlit 7-a-side played every week under Yas lights. Join as a full team or sign up solo and get placed in a squad.',
+    includes:['Referee and match balls','Live league table','Weekly highlights clip','Solo players placed in teams'] },
+  { id:'strength', title:'Strength & Conditioning', where:'Corniche', when:'Mon–Fri', price:110, unit:'AED/CLASS',
+    rating:4.9, tag:'Bestseller', sport:'Fitness', img:'class-strength.jpg', provider:'Corniche Performance', coach:'Coach Sara H.', level:'All levels', dur:'55 min',
+    about:'Barbell strength paired with conditioning intervals, programmed in six-week blocks so you can actually track progress.',
+    includes:['Six-week programmed blocks','Lift technique coaching','Body composition check-in','Open gym access on class days'] },
+  { id:'youth', title:'Youth Football Academy', where:'Al Wahda', when:'Weekends', price:80, unit:'AED/CLASS',
+    rating:4.6, tag:'New', sport:'Football', img:'class-youth.jpg', provider:'Al Wahda Academy', coach:'Coach Tariq A.', level:'Ages 6–14', dur:'75 min',
+    about:'Age-grouped academy sessions focused on first touch, decision making and small-sided games — with end-of-term festival matches.',
+    includes:['UEFA-licensed coaches','Kit provided for the term','Termly player report','Parent viewing area'] },
+  { id:'judo', title:'Judo for Beginners', where:'Khalifa City', when:'Tue/Thu', price:75, unit:'AED/CLASS',
+    rating:4.8, tag:'New', sport:'Combat', img:'class-judo.jpg', provider:'Khalifa Judo Club', coach:'Sensei Aiko T.', level:'Beginner', dur:'60 min',
+    about:'Break-falls first, then grips, throws and ground control. A calm, technical class that builds towards your first grading.',
+    includes:['Gi rental included','Grading pathway to yellow belt','Mixed adult and teen groups','Mat etiquette workshop'] }
+];
+
+var VENUES = [
+  { id:'321sports', title:'321 Sports', where:'Yas Marina Circuit, Yas Island', km:'8.4 km', rate:220, rating:4.8, img:'venue-321-sports.jpg',
+    desc:'Yas Island\u2019s sports hub at Yas Marina Circuit \u2014 gym, studios, cycling and track access under one striking roof.',
+    sport:'Sports hub', surface:'Indoor studios & track', size:'Multi-sport', open:'06:00 \u2013 23:00',
+    about:'321 Sports sits trackside at Yas Marina Circuit: a fully equipped gym, group-fitness studios, Yas Marina Cycles next door and direct access to the circuit\u2019s TrainYas evenings.',
+    amenities:['Gym and fitness studios','Bike hire from Yas Marina Cycles','Changing rooms and showers','Free parking on site'] },
+  { id:'adss', title:'ADSS', where:'ADNEC, Khaleej Al Arabi St', km:'4.2 km', rate:180, rating:4.7, img:'venue-adss.jpg',
+    desc:'Abu Dhabi Summer Sports \u2014 indoor floodlit football pitches and courts inside the air-conditioned halls of ADNEC.',
+    sport:'Indoor football', surface:'Indoor artificial turf', size:'7-a-side', open:'08:00 \u2013 24:00',
+    about:'Abu Dhabi Summer Sports turns the ADNEC halls into a fully air-conditioned sports village: netted football pitches, courts and activity zones, so you can play flat out even in the height of summer.',
+    amenities:['Air-conditioned indoor pitches','Netted 7-a-side turf with goals','Changing rooms and showers','Food court and free parking'] },
+  { id:'turf', title:'Turf Cafe', where:'Abu Dhabi', km:'3.1 km', rate:150, rating:4.6, img:'venue-turf-cafe.jpg',
+    desc:'A sports-themed caf\u00e9 and social venue \u2014 the place to meet before a session or refuel after one.',
+    sport:'Caf\u00e9 & social', surface:'Indoor / terrace', size:'Groups up to 12', open:'07:00 \u2013 23:00',
+    about:'Turf is a sports-themed caf\u00e9 with a shaded terrace next to The Coffee Club. Book a table for your team before a match or settle in afterwards for coffee, smoothies and the game on screen.',
+    amenities:['Shaded outdoor terrace','Live sport on screen','Healthy menu and smoothies','Team tables bookable'] }
+];
+
+var CHALLENGES = [
+  { id:'squatwolf', brand:'Squat Wolf', caption:'Train like a wolf', img:'challenge-squatwolf.jpg', perk:'25% off Squat Wolf gear',
+    goal:'Complete 8 workouts in 30 days', reward:'25% off Squat Wolf activewear and 750 points', progress:3, target:8, days:24,
+    about:'Squat Wolf is rewarding consistency. Complete eight classes or venue sessions inside thirty days and unlock twenty-five percent off your next Squat Wolf order.',
+    steps:[['Join the challenge','Tap join and the tracker starts from your next booking.'],
+           ['Complete eight workouts','Classes and venue bookings both count towards the total.'],
+           ['Check in each time','Scan the QR at the venue so the session is recorded.'],
+           ['Claim the code','A one-time code appears in Rewards when you hit eight.']],
+    terms:['One code per member per campaign','Sessions must be completed, not just booked','Code valid 30 days from issue','Excludes sale items and bundles'] },
+  { id:'huda', brand:'Huda Beauty', caption:'Move with confidence', img:'challenge-huda.jpg', perk:'Full-size 1 Coat Wow mascara',
+    goal:'Complete 5 classes in 30 days', reward:'A full-size Huda Beauty 1 Coat Wow mascara', progress:2, target:5, days:19,
+    about:'Huda Beauty is backing your comeback. Complete five booked classes — any sport — inside thirty days and a full-size mascara is yours.',
+    steps:[['Join the challenge','Tap join and the tracker starts from your next booking.'],
+           ['Complete five classes','Any class booking inside the 30-day window counts.'],
+           ['Check in each time','Scan the QR at the venue so the session is recorded.'],
+           ['Collect your reward','Pick it up at any Huda Beauty counter in Abu Dhabi.']],
+    terms:['One reward per member per campaign','Classes must be completed, not just booked','Reward valid 60 days from issue','Cannot be combined with other offers'] },
+  { id:'adidas', brand:'adidas × Strava', caption:'Start with a step', img:'challenge-adidas-strava.jpg', perk:'20% off adidas running',
+    goal:'Log 100 km on Strava this month', reward:'20% off adidas running shoes and 1,000 points', progress:64, target:100, days:12,
+    about:'Link your Strava and every run, walk and ride counts. Hit 100 km in a calendar month and adidas takes twenty percent off your next pair.',
+    steps:[['Join the challenge','Connect your Strava account in one tap.'],
+           ['Log 100 km','Runs, walks and rides all count towards the total.'],
+           ['Claim the code','A one-time code appears in Rewards when you cross the line.'],
+           ['Use it in store or online','Scan at the till or paste the code at checkout.']],
+    terms:['Strava account required','One code per member per month','Excludes limited editions','Code valid 14 days'] },
+  { id:'kcal', brand:'kcal', caption:'Fuel your move', img:'challenge-kcal.jpg', perk:'Free meal on your 3rd order',
+    goal:'Book 3 venue slots this month', reward:'A free kcal meal and 500 points', progress:1, target:3, days:16,
+    about:'Book three venue slots in a calendar month and kcal covers a meal to refuel afterwards — delivered or collected.',
+    steps:[['Join the challenge','Your existing bookings this month count from day one.'],
+           ['Book three venue slots','Classes do not count — this one is venue bookings only.'],
+           ['Link your kcal account','Use the same mobile number on both apps.'],
+           ['Enjoy your meal','The voucher lands the morning after the third booking.']],
+    terms:['Venue bookings only','Same mobile number required on both accounts','Voucher covers one main meal','Auto-expires after 30 days'] }
+];
+
+var REWARDS = [
+  { id:'steps',    icon:'icon-steps.png',  title:'10,000 Steps Completed', sub:'You\'ve earned 10 points today.', pts:10 },
+  { id:'smoothie', icon:'icon-gift.png',   title:'Free Smoothie',          sub:'Challenge completed! Enjoy a free smoothie from Joe & The Juice.', pts:0 },
+  { id:'sweat',    icon:'icon-star.png',   title:'We Saw You Sweat',       sub:'Here are 20 points for showing up and getting active.', pts:20 }
+];
+
+/* ---------------------------------------------------------
+   HELPERS
+   --------------------------------------------------------- */
+var $  = function (s, r) { return (r || document).querySelector(s); };
+var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+function img(file, alt, cls) {
+  return '<img' + (cls ? ' class="' + cls + '"' : '') + ' src="' + IMG + file + '" alt="' + (alt || '') + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
+}
+function nf(n) { return n.toLocaleString('en-US'); }
+function ptsFmt(n) { return nf(n).replace(',', '.'); }   /* 2.350 as in the design */
+
+var ICON = {
+  chev:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 1.5 6.8 5 3.2 8.5"/></svg>',
+  back:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.8 1.5 3.2 5l3.6 3.5"/></svg>',
+  cal:'<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.1"><rect x="1.5" y="2.5" width="9" height="8" rx="1.5"/><path d="M1.5 5h9M4 1.5v2M8 1.5v2"/></svg>',
+  pin:'<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M6 11s3.5-3.3 3.5-6A3.5 3.5 0 0 0 2.5 5c0 2.7 3.5 6 3.5 6Z"/><circle cx="6" cy="5" r="1.2"/></svg>',
+  star:'<svg viewBox="0 0 20 20"><path d="M10 1.6l2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L10 15l-5.3 2.8 1.1-5.9L1.5 7.8l5.9-.8z"/></svg>',
+  check:'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>'
+};
+function go_(cls) { return '<span class="go' + (cls ? ' ' + cls : '') + '">' + ICON.chev + '</span>'; }
+function greeting() {
+  var h = new Date().getHours();
+  return h < 12 ? 'Good morning,' : h < 17 ? 'Good afternoon,' : 'Good evening,';
+}
+
+var DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dateKey(d) { return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+function addDays(d, n) { var x = new Date(d.getTime()); x.setDate(x.getDate() + n); return x; }
+function prettyDate(d) { return DOW[d.getDay()] + ' ' + d.getDate() + ' ' + MON[d.getMonth()]; }
+function hash(str) {
+  var h = 2166136261;
+  for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = (h * 16777619) >>> 0; }
+  return h;
+}
+function slotTaken(venueId, d, minutes) { return hash(venueId + '|' + dateKey(d) + '|' + minutes) % 100 < 18; }
+function hhmm(mins) { var h = Math.floor(mins / 60), m = mins % 60; return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m; }
+
+/* ---------------------------------------------------------
+   APP STATE
+   --------------------------------------------------------- */
+var state = { filter:'All', joined:{}, booking:{ venueId:null, dayIndex:0, duration:60, slot:null } };
+var DURATIONS = [30, 60, 180];
+var DAY_COUNT = 21;
+var OPEN_FROM = 6 * 60;
+var OPEN_TO   = 23 * 60 + 30;
+
+/* ---------------------------------------------------------
+   SHARED PARTIALS
+   --------------------------------------------------------- */
+function topbar(title, sub) {
+  return '<div class="topbar">' +
+    '<button class="backbtn" data-back aria-label="Back">' + ICON.back + '</button>' +
+    '<div style="flex:1 1 auto;min-width:0">' +
+      (sub ? '<div class="topbar__sub">' + sub + '</div>' : '') +
+      '<div class="topbar__title">' + title + '</div>' +
+    '</div></div>';
+}
+function sechead(title, sub, href, caps) {
+  return '<div class="sechead">' +
+    '<h3 class="sechead__title' + (caps ? ' sechead__title--caps' : '') + '">' + title + '</h3>' +
+    (href ? '<button class="link" data-go="' + href + '">See all</button>' : '') +
+  '</div>' + (sub ? '<p class="sechead__sub">' + sub + '</p>' : '');
+}
+function eventTile(ev) {
+  return '<button class="event" data-go="#/event/' + ev.id + '">' +
+    img(ev.img, ev.title) +
+    '<div class="event__foot">' +
+      '<div class="event__meta"><span>' + ICON.cal + ev.date + '</span><span>' + ICON.pin + ev.where + '</span></div>' +
+      go_() +
+    '</div></button>';
+}
+function classTile(c) {
+  return '<button class="ctile" data-go="#/class/' + c.id + '">' +
+    '<div class="ctile__img">' + img(c.img, c.title) + '</div>' +
+    '<div class="ctile__body">' +
+      '<div class="ctile__top"><h4 class="ctile__title">' + c.title + '</h4>' + go_('go--lg') + '</div>' +
+      '<div class="ctile__foot">' +
+        (c.logo ? img(c.logo, c.provider, 'ctile__logo') : '<span class="ctile__prov">' + c.provider + '</span>') +
+        '<span class="rating">' + ICON.star + c.rating.toFixed(1) + '</span>' +
+      '</div>' +
+    '</div></button>';
+}
+function venueCard(v) {
+  return '<button class="vcard" data-go="#/venue/' + v.id + '">' +
+    '<div class="vcard__img">' + img(v.img, v.title) + '</div>' +
+    '<div class="vcard__body">' +
+      '<div class="vcard__top"><h4 class="vcard__title">' + v.title + '</h4>' + go_('go--lg') + '</div>' +
+      '<p class="vcard__desc">' + v.desc + '</p>' +
+    '</div></button>';
+}
+function partnerTile(ch) {
+  return '<button class="ptile" data-go="#/challenge/' + ch.id + '">' +
+    img(ch.img, ch.brand) +
+    '<div class="ptile__foot"><span class="ptile__cap">' + ch.caption + '</span>' + go_() + '</div>' +
+  '</button>';
+}
+function rewardRow(r) {
+  return '<button class="reward" data-go="#/reward/' + r.id + '">' +
+    '<div class="reward__icon">' + img(r.icon, '') + '</div>' +
+    '<div class="reward__body"><h4 class="reward__title">' + r.title + '</h4><p class="reward__sub">' + r.sub + '</p></div>' +
+    go_('go--lg') +
+  '</button>';
+}
+function pointsRow() {
+  return '<button class="reward" data-go="#/rewards">' +
+    '<div class="reward__icon">' + img('icon-points.png', '') + '</div>' +
+    '<div class="reward__body"><h4 class="reward__title">Your Points</h4><p class="reward__pts">' + ptsFmt(USER.points) + '</p></div>' +
+    go_('go--lg') +
+  '</button>';
+}
+
+/* ---------------------------------------------------------
+   VIEW: HOME
+   --------------------------------------------------------- */
+var HERO = [
+  { title:'A Healthier.<br><em>Happier.</em> Stronger.<br>Abu Dhabi', sub:'Move. Live. Belong.', btn:'What\'s On?', go:'#/events' },
+  { title:'Find your move.<br>Try your first class<br><em>for free.</em>', sub:'Swim. Flow. Grapple.', btn:'See classes', go:'#/classes' },
+  { title:'Every step<br><em>earns points.</em><br>Every point counts.', sub:'Play. Compete. Earn.', btn:'Your rewards', go:'#/rewards' }
+];
+function viewHome() {
+  var slides = HERO.map(function (s) {
+    return '<button class="banner" data-go="' + s.go + '">' +
+      img('hero-runner.jpg', 'Runner', 'banner__img') +
+      '<div class="banner__scrim"></div>' +
+      '<div class="banner__body">' +
+        '<h3 class="banner__title">' + s.title + '</h3>' +
+        '<p class="banner__sub">' + s.sub + '</p>' +
+        '<span class="banner__btn">' + s.btn + '</span>' +
+      '</div></button>';
+  }).join('');
+
+  return '<div class="view">' +
+    '<div class="brand"><img class="brand__logo" src="' + IMG + 'logo.png" alt="Active Abu Dhabi"><hr class="brand__rule"></div>' +
+
+    '<header class="header">' +
+      '<div class="avatar"><div class="avatar__inner">' + img(USER.avatar, USER.name) + '</div></div>' +
+      '<div class="header__greet">' +
+        '<p class="header__hello">' + greeting() + '</p>' +
+        '<p class="header__name">' + USER.name + '</p>' +
+      '</div>' +
+      '<button class="bell" data-toast="3 new notifications" aria-label="Notifications">' + img('icon-bell.png', '') + '<span class="badge">3</span></button>' +
+    '</header>' +
+
+    '<section class="hero">' +
+      '<h2 class="hero__title">Ready to move today?</h2>' +
+      '<div class="slider" data-slider="banner">' +
+        '<div class="slider__track scrollx" data-track>' + slides + '</div>' +
+        '<div class="dots" data-dots></div>' +
+      '</div>' +
+    '</section>' +
+
+    '<section class="section">' +
+      sechead('What\'s On', '', '#/events', true) +
+      '<div class="rail scrollx">' + EVENTS.map(eventTile).join('') + '</div>' +
+    '</section>' +
+
+    '<section class="section">' +
+      sechead('Classes In Abu Dhabi', 'Find your move. Try your first class for free.', '#/classes') +
+      '<div class="rail scrollx">' + CLASSES.slice(0, 6).map(classTile).join('') + '</div>' +
+    '</section>' +
+
+    '<section class="section">' +
+      sechead('Venues', 'Discover places to get active across Abu Dhabi', '#/venues') +
+      '<div style="margin-top:14px">' + VENUES.slice(0, 3).map(venueCard).join('') + '</div>' +
+    '</section>' +
+
+    '<section class="section">' +
+      sechead('Partner Challenges', 'Join a challenge. Make your move. Earn your reward.', '#/challenges', true) +
+      '<div class="rail scrollx">' + CHALLENGES.map(partnerTile).join('') + '</div>' +
+    '</section>' +
+
+    '<section class="section">' +
+      sechead('Rewards', 'Get rewarded for getting active.', '#/rewards', true) +
+      '<div style="margin-top:14px">' + REWARDS.map(rewardRow).join('') + pointsRow() + '</div>' +
+    '</section>' +
+  '</div>';
+}
+
+/* ---------------------------------------------------------
+   VIEW: EVENTS (What's On) + EVENT DETAIL
+   --------------------------------------------------------- */
+function viewEvents() {
+  return '<div class="view view--sub">' +
+    topbar('What\'s On', EVENTS.length + ' upcoming events') +
+    EVENTS.map(function (ev) {
+      return '<button class="card" data-go="#/event/' + ev.id + '">' +
+        '<div class="card__thumb">' + img(ev.img, ev.title) + '</div>' +
+        '<div class="card__body">' +
+          '<div class="card__top"><h4 class="card__title">' + ev.title + '</h4><span class="tag">' + ev.pill + '</span></div>' +
+          '<p class="card__meta">' + ev.date + ' · ' + ev.where + '</p>' +
+          '<div class="card__foot"><p class="price"><b>' + ev.price + '</b><span>AED · from</span></p>' + go_() + '</div>' +
+        '</div></button>';
+    }).join('') +
+  '</div>';
+}
+function viewEvent(id) {
+  var b = byId(EVENTS, id);
+  if (!b) return notFound();
+  return '<div class="view view--sub">' +
+    topbar(b.title, b.pill) +
+    '<div class="dhero">' + img(b.img, b.title) +
+      '<div class="dhero__scrim"></div>' +
+      '<div class="dhero__body"><span class="pill">' + b.pill + '</span><h2 class="dhero__title">' + b.title + '</h2>' +
+      '<p class="dhero__meta">' + b.date + ' · ' + b.where + '</p></div>' +
+    '</div>' +
+    '<div class="block"><h3 class="block__h">About the event</h3><p class="prose">' + b.about + '</p></div>' +
+    '<div class="block"><h3 class="block__h">Details</h3>' +
+      '<div class="kv"><span class="kv__k">Venue</span><span class="kv__v">' + b.venue + '</span></div>' +
+      '<div class="kv"><span class="kv__k">When</span><span class="kv__v">' + b.date + '</span></div>' +
+      '<div class="kv"><span class="kv__k">From</span><span class="kv__v">' + b.price + ' AED</span></div>' +
+    '</div>' +
+    '<button class="btn btn--lg" data-toast="Ticketing opens in the Active Abu Dhabi app">Get tickets · from ' + b.price + ' AED</button>' +
+  '</div>';
+}
+
+/* ---------------------------------------------------------
+   VIEW: CLASSES (3 × 3 scrollable grid) + DETAIL
+   --------------------------------------------------------- */
+function viewClasses() {
+  var sports = ['All'];
+  CLASSES.forEach(function (c) { if (sports.indexOf(c.sport) < 0) sports.push(c.sport); });
+  var chips = sports.map(function (s) {
+    return '<button class="chip' + (state.filter === s ? ' is-on' : '') + '" data-filter="' + s + '">' + s + '</button>';
+  }).join('');
+  var list = CLASSES.filter(function (c) { return state.filter === 'All' || c.sport === state.filter; });
+  var tiles = list.map(function (c) {
+    return '<button class="tile" data-go="#/class/' + c.id + '">' +
+      '<div class="tile__img">' + img(c.img, c.title) + (c.tag ? '<span class="tile__tag">' + c.tag + '</span>' : '') + '</div>' +
+      '<div class="tile__body">' +
+        '<p class="tile__title">' + c.title + '</p>' +
+        '<p class="tile__meta">' + c.where + '</p>' +
+        '<div class="tile__foot"><span class="tile__price">' + c.price + ' <span style="font-size:7.5px;font-weight:400;color:var(--muted)">AED</span></span>' +
+        '<span class="rating">' + ICON.star + c.rating.toFixed(1) + '</span></div>' +
+      '</div></button>';
+  }).join('') || '<p class="empty" style="grid-column:1/-1">No classes in this category yet.</p>';
+
+  return '<div class="view view--sub">' +
+    topbar('Classes In Abu Dhabi', list.length + ' sessions · first class free') +
+    '<div class="chips scrollx">' + chips + '</div>' +
+    '<div class="grid3 scrolly">' + tiles + '</div>' +
+    '<p class="gridnote">Scroll for more ↓</p>' +
+  '</div>';
+}
+function viewClass(id) {
+  var c = byId(CLASSES, id);
+  if (!c) return notFound();
+  return '<div class="view view--sub">' +
+    topbar(c.title, c.provider) +
+    '<div class="dhero">' + img(c.img, c.title) +
+      '<div class="dhero__scrim"></div>' +
+      '<div class="dhero__body">' + (c.tag ? '<span class="pill">' + c.tag + '</span>' : '<span class="pill">' + c.sport + '</span>') +
+        '<h2 class="dhero__title">' + c.title + '</h2><p class="dhero__meta">' + c.where + ' · ' + c.when + '</p></div>' +
+    '</div>' +
+    '<div class="stats">' +
+      '<div class="stat"><div class="stat__v stat__v--accent">' + c.price + '</div><div class="stat__k">' + c.unit.replace('AED/', '') + ' · AED</div></div>' +
+      '<div class="stat"><div class="stat__v">' + c.rating.toFixed(1) + '</div><div class="stat__k">Rating</div></div>' +
+      '<div class="stat"><div class="stat__v">' + c.dur.replace(' min', '') + '</div><div class="stat__k">' + (c.dur.indexOf('min') > -1 ? 'Minutes' : 'Format') + '</div></div>' +
+    '</div>' +
+    '<div class="block"><h3 class="block__h">About this class</h3><p class="prose">' + c.about + '</p></div>' +
+    '<div class="block"><h3 class="block__h">What\'s included</h3><ul class="bullets">' + c.includes.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul></div>' +
+    '<div class="block"><h3 class="block__h">Session details</h3>' +
+      '<div class="kv"><span class="kv__k">Provider</span><span class="kv__v">' + c.provider + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Coach</span><span class="kv__v">' + c.coach + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Level</span><span class="kv__v">' + c.level + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Schedule</span><span class="kv__v">' + c.when + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Duration</span><span class="kv__v">' + c.dur + '</span></div>' +
+    '</div>' +
+    '<button class="btn btn--lg" data-book-class="' + c.id + '">Book this class · ' + c.price + ' AED</button>' +
+  '</div>';
+}
+
+/* ---------------------------------------------------------
+   VIEW: CHALLENGES + DETAIL
+   --------------------------------------------------------- */
+function viewChallenges() {
+  return '<div class="view view--sub">' +
+    topbar('Partner Challenges', CHALLENGES.length + ' live') +
+    CHALLENGES.map(function (ch) {
+      var pct = Math.min(100, Math.round(ch.progress / ch.target * 100));
+      return '<button class="chrow" data-go="#/challenge/' + ch.id + '">' +
+        '<div class="chrow__head">' +
+          '<div class="chrow__img">' + img(ch.img, ch.brand) + '</div>' +
+          '<div style="flex:1 1 auto;min-width:0"><p class="card__title">' + ch.brand + '</p><p class="card__meta">' + ch.perk + '</p></div>' +
+          '<span class="quest__count">' + ch.days + 'd left</span>' +
+        '</div>' +
+        '<div class="progress" style="margin-top:0"><i style="width:' + pct + '%"></i></div>' +
+        '<div class="quest__foot" style="margin-top:0"><span>' + ch.goal + '</span><span>' + pct + '%</span></div>' +
+      '</button>';
+    }).join('') +
+  '</div>';
+}
+function viewChallenge(id) {
+  var ch = byId(CHALLENGES, id);
+  if (!ch) return notFound();
+  var joined = !!state.joined[ch.id];
+  var pct = Math.min(100, Math.round(ch.progress / ch.target * 100));
+  var prog = ch.progress + ' of ' + ch.target;
+  return '<div class="view view--sub">' +
+    topbar(ch.brand, 'Partner challenge') +
+    '<div class="dhero">' + img(ch.img, ch.brand) + '<div class="dhero__scrim"></div>' +
+      '<div class="dhero__body"><span class="pill">' + (joined ? 'Joined' : 'Live') + '</span><h2 class="dhero__title">' + ch.caption + '</h2><p class="dhero__meta">' + ch.perk + '</p></div></div>' +
+    '<div class="quest" style="margin-bottom:22px">' +
+      '<div class="quest__top"><span class="pill">' + pct + '% complete</span><span class="quest__count">' + prog + '</span></div>' +
+      '<h4 class="quest__title">' + ch.goal + '</h4>' +
+      '<p class="quest__reward">Reward: ' + ch.reward + '</p>' +
+      '<div class="progress"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="quest__foot"><span>' + ch.progress + ' / ' + ch.target + '</span><span>' + ch.days + ' days left</span></div>' +
+    '</div>' +
+    '<div class="block"><h3 class="block__h">About this challenge</h3><p class="prose">' + ch.about + '</p></div>' +
+    '<div class="block"><h3 class="block__h">How it works</h3><ol class="steps">' +
+      ch.steps.map(function (s) { return '<li><div><b>' + s[0] + '</b><p>' + s[1] + '</p></div></li>'; }).join('') + '</ol></div>' +
+    '<div class="block"><h3 class="block__h">Terms</h3><ul class="bullets">' + ch.terms.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>' +
+    (joined ? '<button class="btn btn--outline" data-leave="' + ch.id + '">Leave challenge</button>'
+            : '<button class="btn btn--lg" data-join="' + ch.id + '">Join challenge</button>') +
+  '</div>';
+}
+
+/* ---------------------------------------------------------
+   VIEW: REWARDS + DETAIL
+   --------------------------------------------------------- */
+function viewRewards() {
+  return '<div class="view view--sub">' +
+    topbar('Rewards', 'Get rewarded for getting active.') +
+    pointsRow() +
+    '<div style="height:18px"></div>' +
+    REWARDS.map(rewardRow).join('') +
+    '<div class="block" style="margin-top:24px"><h3 class="block__h">How points work</h3>' +
+      '<div class="kv"><span class="kv__k">10,000 steps in a day</span><span class="kv__v">+10 pts</span></div>' +
+      '<div class="kv"><span class="kv__k">Completed class</span><span class="kv__v">+20 pts</span></div>' +
+      '<div class="kv"><span class="kv__k">Venue booking played</span><span class="kv__v">+40 pts</span></div>' +
+      '<div class="kv"><span class="kv__k">Challenge completed</span><span class="kv__v">+100 pts</span></div>' +
+    '</div>' +
+  '</div>';
+}
+function viewReward(id) {
+  var r = byId(REWARDS, id);
+  if (!r) return notFound();
+  return '<div class="view view--sub">' +
+    topbar(r.title, 'Reward') +
+    '<div class="quest" style="text-align:center;padding:28px 20px">' +
+      '<img src="' + IMG + r.icon + '" alt="" style="height:64px;width:auto;margin:0 auto 16px">' +
+      '<h4 class="quest__title" style="margin-top:0">' + r.title + '</h4>' +
+      '<p class="quest__reward">' + r.sub + '</p>' +
+      (r.pts ? '<p class="reward__pts" style="margin-top:14px;color:var(--accent)">+' + r.pts + ' pts</p>' : '') +
+    '</div>' +
+    '<div style="height:18px"></div>' +
+    '<button class="btn btn--lg" data-toast="' + (r.pts ? 'Points are already in your balance' : 'Show this screen at Joe & The Juice to redeem') + '">' + (r.pts ? 'Points collected' : 'Redeem now') + '</button>' +
+  '</div>';
+}
+
+/* ---------------------------------------------------------
+   VIEW: VENUES + DETAIL / BOOKING
+   --------------------------------------------------------- */
+function viewVenues() {
+  return '<div class="view view--sub">' + topbar('Venues', VENUES.length + ' bookable places') + VENUES.map(venueCard).join('') + '</div>';
+}
+function viewVenue(id) {
+  var v = byId(VENUES, id);
+  if (!v) return notFound();
+  if (state.booking.venueId !== v.id) state.booking = { venueId:v.id, dayIndex:0, duration:60, slot:null };
+  return '<div class="view view--sub">' +
+    topbar(v.title, v.sport) +
+    '<div class="dhero">' + img(v.img, v.title) + '<div class="dhero__scrim"></div>' +
+      '<div class="dhero__body"><span class="pill">' + v.sport + '</span><h2 class="dhero__title">' + v.title + '</h2>' +
+      '<p class="dhero__meta">' + v.where + ' · ' + v.km + ' away · ★ ' + v.rating.toFixed(1) + '</p></div></div>' +
+    '<div class="stats">' +
+      '<div class="stat"><div class="stat__v stat__v--accent">' + v.rate + '</div><div class="stat__k">AED / hour</div></div>' +
+      '<div class="stat"><div class="stat__v">' + v.rating.toFixed(1) + '</div><div class="stat__k">Rating</div></div>' +
+      '<div class="stat"><div class="stat__v" style="font-size:13px;line-height:22px;font-weight:600">' + v.size + '</div><div class="stat__k">Format</div></div>' +
+    '</div>' +
+    '<div class="block"><h3 class="block__h">About the venue</h3><p class="prose">' + v.about + '</p></div>' +
+    '<div class="block"><h3 class="block__h">Amenities</h3><ul class="bullets">' + v.amenities.map(function (a) { return '<li>' + a + '</li>'; }).join('') + '</ul></div>' +
+    '<div class="block"><h3 class="block__h">Pick a date</h3><div class="cal scrollx" id="cal">' + calHTML() + '</div></div>' +
+    '<div class="block"><h3 class="block__h">Duration</h3><div class="durations" id="durs">' + durHTML() + '</div></div>' +
+    '<div class="block"><h3 class="block__h">Available time slots</h3>' +
+      '<div class="slots scrolly" id="slots">' + slotsHTML(v) + '</div>' +
+      '<div class="slotnote">' +
+        '<span><i style="background:#fff"></i>Free</span>' +
+        '<span><i style="background:var(--accent)"></i>Selected</span>' +
+        '<span><i style="background:#fff;opacity:.35"></i>Booked</span>' +
+      '</div>' +
+    '</div>' +
+    '<div id="summary">' + summaryHTML(v) + '</div>' +
+  '</div>';
+}
+function calHTML() {
+  var today = new Date(), out = '';
+  for (var i = 0; i < DAY_COUNT; i++) {
+    var d = addDays(today, i);
+    out += '<button class="cal__day' + (state.booking.dayIndex === i ? ' is-on' : '') + '" data-day="' + i + '">' +
+      '<div class="cal__dow">' + (i === 0 ? 'Today' : DOW[d.getDay()]) + '</div>' +
+      '<div class="cal__num">' + d.getDate() + '</div>' +
+      '<div class="cal__mon">' + MON[d.getMonth()] + '</div></button>';
+  }
+  return out;
+}
+function durHTML() {
+  return DURATIONS.map(function (m) {
+    return '<button class="dur' + (state.booking.duration === m ? ' is-on' : '') + '" data-dur="' + m + '">' +
+      '<div class="dur__v">' + m + '</div><div class="dur__k">minutes</div></button>';
+  }).join('');
+}
+function slotsHTML(v) {
+  var d = addDays(new Date(), state.booking.dayIndex);
+  var need = Math.ceil(state.booking.duration / 30), out = '';
+  for (var m = OPEN_FROM; m + state.booking.duration <= OPEN_TO + 30; m += 30) {
+    var free = true;
+    for (var k = 0; k < need; k++) if (slotTaken(v.id, d, m + k * 30)) { free = false; break; }
+    if (state.booking.dayIndex === 0) { var now = new Date(); if (m < now.getHours() * 60 + now.getMinutes() + 60) free = false; }
+    out += '<button class="slot' + (free ? '' : ' is-off') + (state.booking.slot === m ? ' is-on' : '') + '"' +
+      (free ? ' data-slot="' + m + '"' : ' disabled') + '>' + hhmm(m) + '</button>';
+  }
+  return out || '<p class="empty" style="grid-column:1/-1">Nothing left today — try tomorrow.</p>';
+}
+function summaryHTML(v) {
+  var b = state.booking, d = addDays(new Date(), b.dayIndex);
+  var total = Math.round(v.rate * (b.duration / 60)), ready = b.slot !== null;
+  return '<div class="summary">' +
+    '<div class="summary__row"><span>Venue</span><span>' + v.title + '</span></div>' +
+    '<div class="summary__row"><span>Date</span><span>' + prettyDate(d) + '</span></div>' +
+    '<div class="summary__row"><span>Time</span><span>' + (ready ? hhmm(b.slot) + ' – ' + hhmm(b.slot + b.duration) : 'Pick a slot') + '</span></div>' +
+    '<div class="summary__row"><span>Duration</span><span>' + b.duration + ' minutes</span></div>' +
+    '<div class="summary__total"><span>Total</span><b>' + total + ' AED</b></div>' +
+  '</div>' +
+  '<button class="btn btn--lg" data-confirm="' + v.id + '"' + (ready ? '' : ' disabled') + '>' +
+    (ready ? 'Confirm booking · ' + total + ' AED' : 'Select a time slot') + '</button>';
+}
+
+/* ---------------------------------------------------------
+   VIEW: PROFILE
+   --------------------------------------------------------- */
+function viewProfile() {
+  return '<div class="view view--sub">' +
+    topbar('Profile', 'Your account') +
+    '<div class="quest" style="display:flex;align-items:center;gap:14px">' +
+      '<div class="avatar" style="width:56px;height:56px"><div class="avatar__inner">' + img(USER.avatar, USER.name) + '</div></div>' +
+      '<div style="flex:1 1 auto"><h4 class="quest__title" style="margin-top:0">' + USER.name + '</h4><p class="quest__reward">Abu Dhabi · Member since 2026</p></div>' +
+      go_('go--lg') +
+    '</div>' +
+    '<div class="stats" style="margin-top:14px">' +
+      '<div class="stat"><div class="stat__v stat__v--accent">' + ptsFmt(USER.points) + '</div><div class="stat__k">Points</div></div>' +
+      '<div class="stat"><div class="stat__v">12</div><div class="stat__k">Sessions</div></div>' +
+      '<div class="stat"><div class="stat__v">' + Object.keys(state.joined).length + '</div><div class="stat__k">Challenges</div></div>' +
+    '</div>' +
+    '<div class="block"><h3 class="block__h">Settings</h3>' +
+      '<div class="kv"><span class="kv__k">Notifications</span><span class="kv__v">On</span></div>' +
+      '<div class="kv"><span class="kv__k">Language</span><span class="kv__v">English</span></div>' +
+      '<div class="kv"><span class="kv__k">Linked apps</span><span class="kv__v">Strava · Apple Health</span></div>' +
+    '</div>' +
+    '<button class="btn btn--outline" data-toast="Signed out (demo)">Sign out</button>' +
+  '</div>';
+}
+
+function notFound() { return '<div class="view view--sub">' + topbar('Not found') + '<p class="empty">That page does not exist.</p></div>'; }
+
+/* ---------------------------------------------------------
+   OVERLAYS
+   --------------------------------------------------------- */
+function toast(msg) {
+  var old = $('.toast'); if (old) old.remove();
+  var t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(function () { t.remove(); }, 2200);
+}
+function sheet(html) {
+  var s = document.createElement('div'); s.className = 'sheet';
+  s.innerHTML = '<div class="sheet__card">' + html + '</div>';
+  s.addEventListener('click', function (e) { if (e.target === s || e.target.closest('[data-close]')) s.remove(); });
+  document.body.appendChild(s);
+}
+function bookingSheet(v) {
+  var b = state.booking, d = addDays(new Date(), b.dayIndex);
+  var total = Math.round(v.rate * (b.duration / 60));
+  var ref = 'AD-' + (hash(v.id + dateKey(d) + b.slot) % 900000 + 100000);
+  sheet(
+    '<img class="sheet__logo" src="' + IMG + 'logo.png" alt="Active Abu Dhabi">' +
+    '<div class="sheet__icon">' + ICON.check + '</div>' +
+    '<h3 class="sheet__title">Booking confirmed</h3>' +
+    '<p class="sheet__sub">Your slot is held. Show the reference at the gate to check in.</p>' +
+    '<div class="sheet__box">' +
+      '<div class="kv"><span class="kv__k">Reference</span><span class="kv__v">' + ref + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Venue</span><span class="kv__v">' + v.title + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Date</span><span class="kv__v">' + prettyDate(d) + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Time</span><span class="kv__v">' + hhmm(b.slot) + ' – ' + hhmm(b.slot + b.duration) + '</span></div>' +
+      '<div class="kv"><span class="kv__k">Paid</span><span class="kv__v">' + total + ' AED</span></div>' +
+    '</div>' +
+    '<button class="btn btn--lg" data-close>Done</button>'
+  );
+}
+
+/* ---------------------------------------------------------
+   SLIDERS
+   --------------------------------------------------------- */
+function initSliders(root) {
+  $$('[data-slider]', root).forEach(function (sl) {
+    var track = $('[data-track]', sl), dotsEl = $('[data-dots]', sl);
+    if (!track) return;
+    var slides = track.children; if (!slides.length) return;
+    var dots = []; dotsEl.innerHTML = '';
+    for (var i = 0; i < slides.length; i++) {
+      var dt = document.createElement('i'); dotsEl.appendChild(dt); dots.push(dt);
+      (function (n) { dt.addEventListener('click', function () { goTo(n); }); })(i);
+    }
+    var current = 0;
+    function setActive(n) { current = n; dots.forEach(function (d, i) { d.classList.toggle('is-on', i === n); }); }
+    function goTo(n) { track.scrollTo({ left: track.clientWidth * n, behavior: 'smooth' }); setActive(n); }
+    var t;
+    track.addEventListener('scroll', function () {
+      clearTimeout(t); t = setTimeout(function () { setActive(Math.round(track.scrollLeft / (track.clientWidth || 1))); }, 60);
+    }, { passive: true });
+    setActive(0);
+    if (sl.getAttribute('data-slider') === 'banner') {
+      var timer = setInterval(function () {
+        if (document.hidden || !document.body.contains(track)) return;
+        goTo((current + 1) % slides.length);
+      }, 5000);
+      ['pointerdown', 'touchstart'].forEach(function (ev) { sl.addEventListener(ev, function () { clearInterval(timer); }, { passive: true, once: true }); });
+    }
+  });
+}
+
+/* ---------------------------------------------------------
+   ROUTER
+   --------------------------------------------------------- */
+var outlet;
+var NAV_MAP = { '':'#/', 'events':'#/events', 'event':'#/events', 'classes':'#/classes', 'class':'#/classes',
+  'rewards':'#/rewards', 'reward':'#/rewards', 'challenges':'#/challenges', 'challenge':'#/challenges', 'profile':'#/profile' };
+function render() {
+  var h = (location.hash || '#/').replace(/^#/, '');
+  var parts = h.split('/').filter(Boolean);
+  var html;
+  switch (parts[0]) {
+    case undefined:      html = viewHome(); break;
+    case 'events':       html = viewEvents(); break;
+    case 'event':        html = viewEvent(parts[1]); break;
+    case 'classes':      html = viewClasses(); break;
+    case 'class':        html = viewClass(parts[1]); break;
+    case 'challenges':   html = viewChallenges(); break;
+    case 'challenge':    html = viewChallenge(parts[1]); break;
+    case 'rewards':      html = viewRewards(); break;
+    case 'reward':       html = viewReward(parts[1]); break;
+    case 'venues':       html = viewVenues(); break;
+    case 'venue':        html = viewVenue(parts[1]); break;
+    case 'profile':      html = viewProfile(); break;
+    default:             html = notFound();
+  }
+  outlet.innerHTML = html;
+  window.scrollTo(0, 0);
+  var ph = $('#phone'); if (ph) ph.scrollTop = 0;
+  initSliders(outlet);
+  var active = NAV_MAP[parts[0] || ''] || null;
+  $$('#nav .nav__item').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-nav') === active); });
+  var g = $('.grid3'), note = $('.gridnote');
+  if (g && note) note.classList.toggle('is-on', g.scrollHeight > g.clientHeight + 4);
+}
+function go(hash) { location.hash = hash; }
+
+/* ---------------------------------------------------------
+   EVENTS
+   --------------------------------------------------------- */
+function wire() {
+  document.addEventListener('click', function (e) {
+    var el;
+    if ((el = e.target.closest('[data-nav]')))   { go(el.getAttribute('data-nav')); return; }
+    if ((el = e.target.closest('[data-go]')))    { go(el.getAttribute('data-go')); return; }
+    if ((el = e.target.closest('[data-back]')))  { history.length > 1 ? history.back() : go('#/'); return; }
+    if ((el = e.target.closest('[data-toast]'))) { toast(el.getAttribute('data-toast')); return; }
+    if ((el = e.target.closest('[data-filter]'))) { state.filter = el.getAttribute('data-filter'); render(); return; }
+    if ((el = e.target.closest('[data-join]')))  { state.joined[el.getAttribute('data-join')] = true; render(); toast('Challenge joined — good luck!'); return; }
+    if ((el = e.target.closest('[data-leave]'))) { delete state.joined[el.getAttribute('data-leave')]; render(); toast('You left the challenge'); return; }
+    if ((el = e.target.closest('[data-book-class]'))) {
+      var c = byId(CLASSES, el.getAttribute('data-book-class'));
+      sheet('<img class="sheet__logo" src="' + IMG + 'logo.png" alt="Active Abu Dhabi">' +
+        '<div class="sheet__icon">' + ICON.check + '</div><h3 class="sheet__title">Spot reserved</h3>' +
+        '<p class="sheet__sub">' + c.title + ' · ' + c.when + '</p>' +
+        '<div class="sheet__box">' +
+          '<div class="kv"><span class="kv__k">Provider</span><span class="kv__v">' + c.provider + '</span></div>' +
+          '<div class="kv"><span class="kv__k">Coach</span><span class="kv__v">' + c.coach + '</span></div>' +
+          '<div class="kv"><span class="kv__k">Location</span><span class="kv__v">' + c.where + '</span></div>' +
+          '<div class="kv"><span class="kv__k">Paid</span><span class="kv__v">' + c.price + ' AED</span></div>' +
+        '</div><button class="btn btn--lg" data-close>Done</button>');
+      return;
+    }
+    if ((el = e.target.closest('[data-day]'))) {
+      state.booking.dayIndex = +el.getAttribute('data-day'); state.booking.slot = null;
+      $$('#cal .cal__day').forEach(function (d, i) { d.classList.toggle('is-on', i === state.booking.dayIndex); });
+      refreshBooking(); return;
+    }
+    if ((el = e.target.closest('[data-dur]'))) {
+      state.booking.duration = +el.getAttribute('data-dur'); state.booking.slot = null;
+      $$('#durs .dur').forEach(function (d) { d.classList.toggle('is-on', +d.getAttribute('data-dur') === state.booking.duration); });
+      refreshBooking(); return;
+    }
+    if ((el = e.target.closest('[data-slot]'))) {
+      state.booking.slot = +el.getAttribute('data-slot');
+      $$('#slots .slot').forEach(function (s) { s.classList.toggle('is-on', +s.getAttribute('data-slot') === state.booking.slot); });
+      refreshBooking(true); return;
+    }
+    if ((el = e.target.closest('[data-confirm]'))) { bookingSheet(byId(VENUES, el.getAttribute('data-confirm'))); return; }
+  });
+  window.addEventListener('hashchange', render);
+}
+function refreshBooking(slotsOnly) {
+  var v = byId(VENUES, state.booking.venueId); if (!v) return;
+  if (!slotsOnly) { var s = $('#slots'); if (s) s.innerHTML = slotsHTML(v); }
+  var sum = $('#summary'); if (sum) sum.innerHTML = summaryHTML(v);
+}
+
+/* ---------------------------------------------------------
+   BOOT
+   --------------------------------------------------------- */
+function fitPhone() {
+  var ph = $('#phone'); if (!ph) return;
+  if (window.innerWidth < 768) { ph.style.removeProperty('--phone-scale'); return; }
+  var s = Math.min(1, (window.innerHeight - 48) / 953, (window.innerWidth - 48) / 440);
+  ph.style.setProperty('--phone-scale', s.toFixed(4));
+}
+function boot() {
+  outlet = $('#app'); wire(); render();
+  fitPhone(); window.addEventListener('resize', fitPhone);
+  var splash = $('#splash');
+  setTimeout(function () { if (splash) { splash.classList.add('is-hidden'); setTimeout(function () { splash.remove(); }, 700); } }, SPLASH_MS);
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>
+</body>
+</html>
